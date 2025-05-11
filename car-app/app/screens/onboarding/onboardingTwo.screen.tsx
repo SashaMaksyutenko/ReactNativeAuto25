@@ -26,17 +26,15 @@ const onBoardingScreenTwo = () => {
         <View>
           <View style={styles.infoTextContainer}>
             <Text style={[styles.infoText]}>
-              Discover your next adventure with Qent. we’re here to
-            </Text>
-            <Text style={[styles.infoText]}>
-              provide you with a seamless car rental experience.
+              Discover your next adventure with RentCar. We’re here to provide
+              you with a seamless car rental experience.
             </Text>
             <Text style={[styles.infoText]}>
               Let’s get started on your journey.
             </Text>
           </View>
           <Button
-            onPress={() => navigate('onBoardingScreenTwo')}
+            onPress={() => navigate('SignInScreen')}
             text="Get Started"
             buttonStyles={styles.buttonStyle}
             textStyles={styles.buttonText}

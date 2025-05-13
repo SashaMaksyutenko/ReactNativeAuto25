@@ -4,32 +4,34 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import assets from '../../assets';
 import Button from '../../components/button/component';
-import CheckBoxComponent from '../../components/checkbox/component';
 import InputComponent from '../../components/input/component';
+import {goBack, navigate} from '../../navigators/navigation-utilities';
 import {scale} from '../../theme/scale';
-import {createStyles} from './signIn.styles';
-import {useSignin} from './signin.hook';
-import {renderMarginBottom} from '../../utils/ui-utils';
-import {navigate} from '../../navigators/navigation-utilities';
+import {renderMarginTop} from '../../utils/ui-utils';
+import {useSignup} from './signup.hook';
+import {createStyles} from './signup.styles';
 
-const SignInScreen = () => {
+const SignUpScreen = () => {
   const styles = createStyles();
-  const {isSecure, setIsSecure} = useSignin();
+  const {isSecure, setIsSecure} = useSignup();
   const {logo_black} = assets;
   return (
     <ScrollView style={styles.container}>
       <View style={styles.flexRow}>
         <Image source={logo_black} style={styles.carLogo} />
-        <Text style={styles.titleStyle}>RentCar</Text>
+        <Text style={styles.titleStyle}>Qent</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.textStyle}>Welcome Back</Text>
-        <Text style={styles.textStyle}>Ready to hit the road.</Text>
+        <Text style={[styles.textStyle, styles.textCenter]}>Sign Up</Text>
       </View>
       <View style={styles.inputContainer}>
         <InputComponent
           onChangeText={e => console.log(e)}
-          placeholder={'Email/Phone Number'}
+          placeholder={'Full Name'}
+        />
+        <InputComponent
+          onChangeText={e => console.log(e)}
+          placeholder={'Email Address'}
         />
         <InputComponent
           isSecure
@@ -38,23 +40,16 @@ const SignInScreen = () => {
           placeholder={'Password'}
           onSecurePress={() => setIsSecure(!isSecure)}
         />
+        <InputComponent
+          onChangeText={e => console.log(e)}
+          placeholder={'Country'}
+        />
       </View>
-      <View style={[styles.colG2]}>
-        <View style={styles.flexRow}>
-          <CheckBoxComponent
-            onPress={e => {
-              console.log('item', e);
-            }}
-            isChecked={false}
-          />
-          <Text style={styles.textRemember}>Remember Me</Text>
-        </View>
-        <Text style={styles.textRemember}>Forgot Password</Text>
-      </View>
+      {renderMarginTop(12)}
       <View style={styles.buttonContainer}>
         <Button text="Login" textStyles={styles.buttonText} />
         <Button
-          onPress={() => navigate('SignUpScreen')}
+          //onPress={() => navigate('ResetScreen')}
           text="Sign Up"
           textStyles={styles.outlineButtonSignUpText}
           buttonStyles={styles.outlineButton}
@@ -81,13 +76,14 @@ const SignInScreen = () => {
       </View>
       <View style={styles.haveAccountContainer}>
         <Text style={styles.dontHaveText}>
-          Don't have an account ? {'\t'}
-          <Text style={styles.dontHaveText}>Sign Up</Text>
+          Already have an account? {'\t'}
+          <Text onPress={goBack} style={styles.dontHaveText}>
+            Login
+          </Text>
         </Text>
       </View>
-      {renderMarginBottom(26)}
     </ScrollView>
   );
 };
 
-export default SignInScreen;
+export default SignUpScreen;

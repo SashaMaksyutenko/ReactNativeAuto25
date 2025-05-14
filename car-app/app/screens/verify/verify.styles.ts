@@ -3,6 +3,7 @@ import {colors} from '../../theme/colors';
 import {scale} from '../../theme/scale';
 import {FontSize} from '../../theme/font-size';
 import {typography} from '../../theme/typography';
+
 export const createStyles = () =>
   StyleSheet.create({
     container: {
@@ -10,6 +11,13 @@ export const createStyles = () =>
       backgroundColor: colors.background,
       paddingHorizontal: scale(18),
       paddingTop: scale(28),
+    },
+    main: {
+      flex: 0.8,
+      justifyContent: 'center',
+    },
+    flex: {
+      flex: 1,
     },
     carLogo: {
       height: scale(38),
@@ -30,6 +38,11 @@ export const createStyles = () =>
     textContainer: {
       paddingTop: scale(38),
       marginBottom: scale(12),
+    },
+    infoText: {
+      color: colors.placeholder,
+      fontFamily: typography.regular,
+      textAlign: 'center',
     },
     textStyle: {
       color: colors.black,

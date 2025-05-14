@@ -10,7 +10,6 @@ import {scale} from '../../theme/scale';
 import {renderMarginTop} from '../../utils/ui-utils';
 import {useSignup} from './signup.hook';
 import {createStyles} from './signup.styles';
-
 const SignUpScreen = () => {
   const styles = createStyles();
   const {isSecure, setIsSecure} = useSignup();
@@ -19,7 +18,7 @@ const SignUpScreen = () => {
     <ScrollView style={styles.container}>
       <View style={styles.flexRow}>
         <Image source={logo_black} style={styles.carLogo} />
-        <Text style={styles.titleStyle}>Qent</Text>
+        <Text style={styles.titleStyle}>RentCar</Text>
       </View>
       <View style={styles.textContainer}>
         <Text style={[styles.textStyle, styles.textCenter]}>Sign Up</Text>
@@ -49,7 +48,7 @@ const SignUpScreen = () => {
       <View style={styles.buttonContainer}>
         <Button text="Login" textStyles={styles.buttonText} />
         <Button
-          //onPress={() => navigate('ResetScreen')}
+          onPress={() => navigate('ResetScreen')}
           text="Sign Up"
           textStyles={styles.outlineButtonSignUpText}
           buttonStyles={styles.outlineButton}

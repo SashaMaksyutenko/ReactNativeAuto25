@@ -3,12 +3,12 @@ import {Image, Text, View} from 'react-native';
 import assets from '../../assets';
 import Button from '../../components/button/component';
 import InputComponent from '../../components/input/component';
-import {renderMarginTop} from '../../utils/ui-utils';
-import {createStyles} from './verify.styles';
-import CountryComponent from '../../components/countrypicker/component';
+import OtpComponent from '../../components/otp/component';
 import {navigate} from '../../navigators/navigation-utilities';
+import {renderMarginTop} from '../../utils/ui-utils';
+import {createStyles} from './otp.styles';
 
-const VerifyScreen = () => {
+const OtpScreen = () => {
   const styles = createStyles();
   const {logo_black} = assets;
 
@@ -22,20 +22,15 @@ const VerifyScreen = () => {
         <View style={styles.main}>
           <View style={styles.textContainer}>
             <Text style={[styles.textStyle, styles.textCenter]}>
-              Verify your phone number
+              Enter verification code
             </Text>
             {renderMarginTop(12)}
             <Text style={styles.infoText}>
-              We have sent you an SMS with a code to number
+              We have send a Code to : +100******00
             </Text>
           </View>
           <View style={styles.inputContainer}>
-            <CountryComponent onPress={e => console.log(e)} />
-            <InputComponent
-              keyboardType="numeric"
-              onChangeText={e => console.log(e)}
-              placeholder={'Phone Number'}
-            />
+            <OtpComponent onOTPChange={e => console.log(e)} />
           </View>
           {renderMarginTop(28)}
           <Button
@@ -44,10 +39,15 @@ const VerifyScreen = () => {
             textStyles={styles.buttonText}
           />
           {renderMarginTop(28)}
+          <Text
+            onPress={() => navigate('SignInScreen')}
+            style={[styles.dontHaveText, styles.textCenter]}>
+            Didn’t receive the OTP ? <Text>Resend</Text>
+          </Text>
         </View>
       </View>
     </View>
   );
 };
 
-export default VerifyScreen;
+export default OtpScreen;

@@ -6,5 +6,10 @@ export type NavigatorParamList = {
   ['ResetScreen']: undefined;
   ['VerifyScreen']: undefined;
   ['OtpScreen']: undefined;
+  ['HomeScreen']: undefined;
+  ['AccountScreen']: undefined;
+  ['NotificationScreen']: undefined;
+  ['MessageScreen']: undefined;
+  ['SearchScreen']: undefined;
 };
 export type ScreenName = keyof NavigatorParamList;

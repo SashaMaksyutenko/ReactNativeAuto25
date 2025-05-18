@@ -12,12 +12,15 @@ const InputComponent = ({
   isSecure,
   onSecurePress,
   keyboardType,
+  leftAction,
+  containerStyle,
 }: IInputProps) => {
   const styles = createStyles();
   const {eye} = assets;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
+      {leftAction}
       <TextInput
         placeholder={placeholder}
         style={styles.input}

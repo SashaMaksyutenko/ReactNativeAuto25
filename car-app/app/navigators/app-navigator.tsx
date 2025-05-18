@@ -10,7 +10,7 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {NavigatorParamList} from './navigation-route';
 import {navigationRef} from './navigation-utilities';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -24,6 +24,11 @@ import SignUpScreen from '../screens/signup/signup.screen';
 import ResetScreen from '../screens/reset/reset.screen';
 import VerifyScreen from '../screens/verify/verify.screen';
 import OtpScreen from '../screens/otp/otp.screen';
+import HomeScreen from '../screens/home/home.screen';
+import AccountScreen from '../screens/account/account.screen';
+import NotificationScreen from '../screens/notification/notification.screen';
+import MessageScreen from '../screens/message/message.screen';
+import SearchScreen from '../screens/search/search.screen';
 type NavigationProps = Partial<
   React.ComponentProps<typeof NavigationContainer>
 >;
@@ -42,29 +47,29 @@ const TabStack = () => {
         keyboardHidesTabBar: true,
         tabBarIcon: ({focused, size}) => {
           let iconName: string = 'camera';
-          let tabName: string = 'Home';
-          if (route.name == 'OnBoardingScreen') {
-            iconName = focused ? 'camera' : 'camera';
-            tabName = 'Camera';
+          if (route.name == 'HomeScreen') {
+            iconName = focused ? 'home' : 'home';
           }
+          else if (route.name == 'SearchScreen') {
+            iconName = focused ? 'search' : 'search';
+          }
+          else if (route.name == 'MessageScreen') {
+            iconName = focused ? 'message' : 'message';
+          }
+          else if (route.name == 'NotificationScreen') {
+            iconName = focused ? 'notifications-none' : 'notifications-none';
+          }
+          else if (route.name == 'AccountScreen') {
+            iconName = focused ? 'person-outline' : 'person-outline';
+          }
+          
           return (
             <View style={styles.tabContainer}>
-              <MaterialCommunityIcons
+              <MaterialIcons
                 name={iconName}
                 size={scale(focused ? 25 : 23)}
                 color={focused ? colors.white : colors.icon}
               />
-              <Text
-                numberOfLines={1}
-                style={[
-                  styles.textStyle,
-                  {
-                    fontWeight: focused ? '600' : '400',
-                    color: focused ? colors.white : colors.icon,
-                  },
-                ]}>
-                {tabName}
-              </Text>
             </View>
           );
         },
@@ -80,13 +85,37 @@ const TabStack = () => {
             Platform.OS == 'ios'
               ? scale(50 + useSafeAreaInsets().bottom)
               : scale(60),
-          backgroundColor: colors.black,
+          backgroundColor: colors.bgTab,
+          position: 'absolute',
+          bottom: scale(28),
+          borderRadius: scale(30),
+          marginHorizontal: scale(12),
         },
       })}
-      initialRouteName={'OnBoardingScreen'}>
+      initialRouteName={'HomeScreen'}>
       <Tab.Screen
-        name="OnBoardingScreen"
-        component={OnBoardingScreen}
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{tabBarLabel: 'Onboarding', tabBarShowLabel: false}}
+      />
+      <Tab.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{tabBarLabel: 'Onboarding', tabBarShowLabel: false}}
+      />
+      <Tab.Screen
+        name="MessageScreen"
+        component={MessageScreen}
+        options={{tabBarLabel: 'Onboarding', tabBarShowLabel: false}}
+      />
+      <Tab.Screen
+        name="NotificationScreen"
+        component={NotificationScreen}
+        options={{tabBarLabel: 'Onboarding', tabBarShowLabel: false}}
+      />
+      <Tab.Screen
+        name="AccountScreen"
+        component={AccountScreen}
         options={{tabBarLabel: 'Onboarding', tabBarShowLabel: false}}
       />
     </Tab.Navigator>
@@ -161,7 +190,7 @@ const RootStack = () => {
   );
 };
 const CombinedStack = () => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false, animationEnabled: true}}>

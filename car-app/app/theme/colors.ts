@@ -18,5 +18,9 @@ export const colors = {
   textForgot: '#454545',
   outlineButtonBg: '#EDEDED',
   btnBorder: '#D7D7D7',
-divider: '#D9D9D9',
+  divider: '#D9D9D9',
+  gray: '#767676',
+  carBg: '#f0f0f0',
+  star: '#FF8F3A',
+  bgTab: '#21292B',
 };

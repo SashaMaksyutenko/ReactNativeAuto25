@@ -23,4 +23,5 @@ export const colors = {
   carBg: '#f0f0f0',
   star: '#FF8F3A',
   bgTab: '#21292B',
+  crossBg: '#141B34',
 };

@@ -4,14 +4,19 @@ import {renderMarginBottom} from '../../utils/ui-utils';
 import {ITabProps} from './ITab.props';
 import {createStyles} from './tab.styles';
 
-const TabSwitcher = ({title, data, onPress}: ITabProps) => {
+const TabSwitcher = ({title,
+  data,
+  onPress,
+  tabStyle,
+  tabContainerStyle,
+  tabTextStyle,}: ITabProps) => {
   const [active, setActive] = useState(data[0]);
   const styles = createStyles();
   return (
     <View style={styles.typeView}>
       {title && <Text style={styles.filterTypeText}>{title}</Text>}
       {renderMarginBottom(16)}
-      <View style={styles.tabContainer}>
+      <View style={[styles.tabContainer, tabContainerStyle]}>
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -27,6 +32,7 @@ const TabSwitcher = ({title, data, onPress}: ITabProps) => {
               <Text
                 style={[
                   styles.tabText,
+                  tabTextStyle,
                   item.id === active.id && styles.tabTextActive,
                 ]}>
                 {item.label}

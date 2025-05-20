@@ -5,18 +5,20 @@ import CarBrandComponent from '../../components/carBrand/component';
 import HeaderComponent from '../../components/header/component';
 import SearchComponent from '../../components/search/component';
 import {createStyles} from './search.styles';
-import CarActions from './view/carActions.view';
+import CarActionView from './view/carActions.view';
+import {useSearch} from './search.hook';
+import FilterView from './view/filter.view';
 
 const SearchScreen = () => {
   const styles = createStyles();
-
+  const {showFilter, setShowFilter} = useSearch();
   return (
     <View style={styles.container}>
       <HeaderComponent title="Search" hasBack />
       <ScrollView
         showsVerticalScrollIndicator={false}
         stickyHeaderIndices={[0]}>
-        <SearchComponent />
+        <SearchComponent onFilterPress={() => setShowFilter(!showFilter)} />
         <View style={[styles.showCase, styles.p18]}>
           <FlatList
             showsHorizontalScrollIndicator={false}
@@ -39,18 +41,19 @@ const SearchScreen = () => {
             <Text style={styles.viewAll}>View All</Text>
           </View>
           <View style={styles.flexRow}>
-            <CarComponent bottomActions={<CarActions />} />
-            <CarComponent bottomActions={<CarActions />} />
+            <CarComponent bottomActions={<CarActionView />} />
+            <CarComponent bottomActions={<CarActionView />} />
           </View>
           <View style={styles.flexRow}>
-            <CarComponent bottomActions={<CarActions />} />
-            <CarComponent bottomActions={<CarActions />} />
+            <CarComponent bottomActions={<CarActionView />} />
+            <CarComponent bottomActions={<CarActionView />} />
           </View>
           <View style={styles.flexRow}>
-            <CarComponent bottomActions={<CarActions />} />
-            <CarComponent bottomActions={<CarActions />} />
+            <CarComponent bottomActions={<CarActionView />} />
+            <CarComponent bottomActions={<CarActionView />} />
           </View>
         </View>
+        <FilterView visible={showFilter} setVisible={setShowFilter} />
       </ScrollView>
     </View>
   );

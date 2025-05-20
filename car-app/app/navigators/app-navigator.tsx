@@ -3,7 +3,6 @@
 /* eslint-disable eqeqeq */
 import React from 'react';
 import {Animated, Platform, Text, View} from 'react-native';
-
 import {NavigationContainer} from '@react-navigation/native';
 import {
   CardStyleInterpolators,

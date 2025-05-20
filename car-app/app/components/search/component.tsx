@@ -1,6 +1,6 @@
 import React from 'react';
 import {Pressable, View} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors} from '../../theme/colors';
 import {scale} from '../../theme/scale';
@@ -23,8 +23,8 @@ const SearchComponent = ({onFilterPress}: ISearchProps) => {
       <Pressable
         onPress={onFilterPress}
         style={[styles.borderRound, styles.wh]}>
-        <AntDesign
-          name="filter"
+        <MaterialCommunityIcons
+          name="filter-outline"
           size={scale(26)}
           color={colors.gray}
         />

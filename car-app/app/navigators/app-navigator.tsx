@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable eqeqeq */
 import React from 'react';
-import {Animated, Platform, Text, View} from 'react-native';
+import {Animated, Platform, ImageBackground, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   CardStyleInterpolators,
@@ -48,20 +48,16 @@ const TabStack = () => {
           let iconName: string = 'camera';
           if (route.name == 'HomeScreen') {
             iconName = focused ? 'home' : 'home';
-          }
-          else if (route.name == 'SearchScreen') {
+          } else if (route.name == 'SearchScreen') {
             iconName = focused ? 'search' : 'search';
-          }
-          else if (route.name == 'MessageScreen') {
+          } else if (route.name == 'MessageScreen') {
             iconName = focused ? 'message' : 'message';
-          }
-          else if (route.name == 'NotificationScreen') {
+          } else if (route.name == 'NotificationScreen') {
             iconName = focused ? 'notifications-none' : 'notifications-none';
-          }
-          else if (route.name == 'AccountScreen') {
+          } else if (route.name == 'AccountScreen') {
             iconName = focused ? 'person-outline' : 'person-outline';
           }
-          
+
           return (
             <View style={styles.tabContainer}>
               <MaterialIcons

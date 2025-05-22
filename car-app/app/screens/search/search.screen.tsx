@@ -4,14 +4,15 @@ import CarComponent from '../../components/car/component';
 import CarBrandComponent from '../../components/carBrand/component';
 import HeaderComponent from '../../components/header/component';
 import SearchComponent from '../../components/search/component';
+import {useSearch} from './search.hook';
 import {createStyles} from './search.styles';
 import CarActionView from './view/carActions.view';
-import {useSearch} from './search.hook';
 import FilterView from './view/filter.view';
-
+import {navigate} from '../../navigators/navigation-utilities';
 const SearchScreen = () => {
   const styles = createStyles();
   const {showFilter, setShowFilter} = useSearch();
+
   return (
     <View style={styles.container}>
       <HeaderComponent title="Search" hasBack />
@@ -41,16 +42,34 @@ const SearchScreen = () => {
             <Text style={styles.viewAll}>View All</Text>
           </View>
           <View style={styles.flexRow}>
-            <CarComponent bottomActions={<CarActionView />} />
-            <CarComponent bottomActions={<CarActionView />} />
+            <CarComponent
+              onPress={() => navigate('rootStack')}
+              bottomActions={<CarActionView />}
+            />
+            <CarComponent
+              onPress={() => navigate('rootStack')}
+              bottomActions={<CarActionView />}
+            />
           </View>
           <View style={styles.flexRow}>
-            <CarComponent bottomActions={<CarActionView />} />
-            <CarComponent bottomActions={<CarActionView />} />
+            <CarComponent
+              onPress={() => navigate('rootStack')}
+              bottomActions={<CarActionView />}
+            />
+            <CarComponent
+              onPress={() => navigate('rootStack')}
+              bottomActions={<CarActionView />}
+            />
           </View>
           <View style={styles.flexRow}>
-            <CarComponent bottomActions={<CarActionView />} />
-            <CarComponent bottomActions={<CarActionView />} />
+            <CarComponent
+              onPress={() => navigate('rootStack')}
+              bottomActions={<CarActionView />}
+            />
+            <CarComponent
+              onPress={() => navigate('rootStack')}
+              bottomActions={<CarActionView />}
+            />
           </View>
         </View>
         <FilterView visible={showFilter} setVisible={setShowFilter} />
@@ -58,5 +77,4 @@ const SearchScreen = () => {
     </View>
   );
 };
-
 export default SearchScreen;

@@ -28,7 +28,7 @@ const CarComponent = ({bottomActions, onPress}: ICarComponentProps) => {
         {renderMarginBottom(4)}
         <View style={styles.flex}>
           <Text style={styles.title}>5.0</Text>
-          <FontAwesome name="star-o" size={scale(14)} color={colors.star} />
+          <FontAwesome name="star" size={scale(14)} color={colors.star} />
         </View>
         {renderMarginBottom(4)}
         <View style={[styles.flex]}>

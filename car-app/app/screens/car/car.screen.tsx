@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {Pressable, ScrollView, Text, View} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -15,9 +15,9 @@ import {createStyles} from './car.styles';
 import {scale} from '../../theme/scale';
 import {Image} from 'react-native';
 import assets from '../../assets';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Button from '../../components/button/component';
-
+import FeatureComponent from '../../components/feature/component';
+import ReviewComponent from '../../components/review/component';
 const CarScreen = () => {
   const {person} = assets;
   const styles = createStyles();
@@ -29,7 +29,7 @@ const CarScreen = () => {
   return (
     <View style={styles.container}>
       <HeaderComponent title="Car Details" hasBack />
-      <View style={styles.flex}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.flex}>
         <ImageSlider images={data} />
         {renderMarginTop(12)}
         <View style={styles.main}>
@@ -38,7 +38,7 @@ const CarScreen = () => {
               <View style={styles.flex}>
                 <Text style={styles.title}>Tesla Model S</Text>
                 <Text style={styles.text}>
-                  A car with high specs that are rented at an affordable price
+                  A car with high specs that are rented ot an affordable price
                 </Text>
               </View>
               <View>
@@ -79,52 +79,31 @@ const CarScreen = () => {
               <Text style={styles.title}>Car Features</Text>
               {renderMarginTop(12)}
               <View style={styles.cg14}>
-                <Pressable style={styles.featureContainer}>
-                  <Pressable style={styles.featureBorder}>
-                    <MaterialCommunityIcons
-                      name="car-seat"
-                      color={colors.gray}
-                      size={scale(20)}
-                    />
-                  </Pressable>
-                  <View>
-                    <Text style={styles.featureTitle}>Capacity</Text>
-                    <Text style={styles.featureInfo}>5 Seats</Text>
-                  </View>
-                </Pressable>
-                <Pressable style={styles.featureContainer}>
-                  <Pressable style={styles.featureBorder}>
-                    <MaterialCommunityIcons
-                      name="car-seat"
-                      color={colors.gray}
-                      size={scale(20)}
-                    />
-                  </Pressable>
-                  <View>
-                    <Text style={styles.featureTitle}>Capacity</Text>
-                    <Text style={styles.featureInfo}>5 Seats</Text>
-                  </View>
-                </Pressable>
-                <Pressable style={styles.featureContainer}>
-                  <Pressable style={styles.featureBorder}>
-                    <MaterialCommunityIcons
-                      name="car-seat"
-                      color={colors.gray}
-                      size={scale(20)}
-                    />
-                  </Pressable>
-                  <View>
-                    <Text style={styles.featureTitle}>Capacity</Text>
-                    <Text style={styles.featureInfo}>5 Seats</Text>
-                  </View>
-                </Pressable>
+                <FeatureComponent />
+                <FeatureComponent />
+                <FeatureComponent />
+              </View>
+              {renderMarginTop(12)}
+              <View style={styles.cg14}>
+                <FeatureComponent />
+                <FeatureComponent />
+                <FeatureComponent />
               </View>
             </View>
+            {renderMarginTop(18)}
+            <View style={styles.profile}>
+              <Text style={styles.title}>Review (125)</Text>
+              <Text style={styles.text}>View All</Text>
+            </View>
+            <ReviewComponent />
           </View>
-          <Button text="Book Now" />
+
         </View>
-      </View>
+      </ScrollView>
+      <Button text="Book Now" buttonStyles={styles.btn} />
+      {renderBorderBottom(6)}
     </View>
   );
 };
+
 export default CarScreen;

@@ -13,5 +13,6 @@ export type NavigatorParamList = {
   ['SearchScreen']: undefined;
   ['CarScreen']: undefined;
   ['rootStack']: undefined;
+  ['ReviewScreen']: undefined;
 };
 export type ScreenName = keyof NavigatorParamList;

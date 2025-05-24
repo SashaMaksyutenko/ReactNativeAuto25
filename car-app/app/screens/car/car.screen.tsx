@@ -1,23 +1,25 @@
 import React from 'react';
-import {Pressable, ScrollView, Text, View} from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Feather from 'react-native-vector-icons/Feather';
+import {FlatList, Image, Pressable, ScrollView, Text, View} from 'react-native';
+
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import assets from '../../assets';
+import Button from '../../components/button/component';
+import FeatureComponent from '../../components/feature/component';
 import HeaderComponent from '../../components/header/component';
+import ReviewComponent from '../../components/review/component';
 import ImageSlider from '../../components/slider/component';
+import {navigate} from '../../navigators/navigation-utilities';
 import {colors} from '../../theme/colors';
+import {scale} from '../../theme/scale';
 import {
   renderBorderBottom,
   renderMarginBottom,
   renderMarginTop,
 } from '../../utils/ui-utils';
 import {createStyles} from './car.styles';
-import {scale} from '../../theme/scale';
-import {Image} from 'react-native';
-import assets from '../../assets';
-import Button from '../../components/button/component';
-import FeatureComponent from '../../components/feature/component';
-import ReviewComponent from '../../components/review/component';
 const CarScreen = () => {
   const {person} = assets;
   const styles = createStyles();
@@ -93,11 +95,20 @@ const CarScreen = () => {
             {renderMarginTop(18)}
             <View style={styles.profile}>
               <Text style={styles.title}>Review (125)</Text>
-              <Text style={styles.text}>View All</Text>
+              <Text
+                onPress={() => navigate('ReviewScreen')}
+                style={styles.text}>
+                See All
+              </Text>
             </View>
-            <ReviewComponent />
+            {renderMarginTop(12)}
+            <FlatList
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={[1, 2, 3]}
+              renderItem={() => <ReviewComponent />}
+            />
           </View>
-
         </View>
       </ScrollView>
       <Button text="Book Now" buttonStyles={styles.btn} />

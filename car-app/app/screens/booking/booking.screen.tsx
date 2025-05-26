@@ -1,21 +1,26 @@
-import {View, Text, Switch} from 'react-native';
 import React, {useState} from 'react';
-import HeaderComponent from '../../components/header/component';
-import {createStyles} from './booking.styles';
-import StepperComponent from '../../components/stepper/component';
-import {colors} from '../../theme/colors';
-import {renderMarginBottom} from '../../utils/ui-utils';
-import InputComponent from '../../components/input/component';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {scale} from '../../theme/scale';
+import {Pressable, ScrollView, Switch, Text, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import DateComponent from '../../components/date/component';
+import HeaderComponent from '../../components/header/component';
+import InputComponent from '../../components/input/component';
+import StepperComponent from '../../components/stepper/component';
+import TabSwitcher from '../../components/tabSwitcher/component';
+import {colors} from '../../theme/colors';
+import {scale} from '../../theme/scale';
+import {renderMarginBottom} from '../../utils/ui-utils';
+import {genderData, rentalData} from '../search/view/filter.data';
+import {createStyles} from './booking.styles';
+import Button from '../../components/button/component';
 const BookingScreen = () => {
   const styles = createStyles();
   const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState(false);
   return (
     <View style={styles.container}>
       <HeaderComponent title="Booking Details" hasBack />
-      <View style={styles.main}>
+      <ScrollView style={styles.main}>
         <StepperComponent active={3} />
         {renderMarginBottom(6)}
         <View style={styles.switchContainer}>
@@ -72,9 +77,48 @@ const BookingScreen = () => {
           placeholder="Contact*"
           onChangeText={e => console.log(e)}
         />
-      </View>
+        {renderMarginBottom(12)}
+        <TabSwitcher
+          title="Gender"
+          data={genderData}
+          onPress={e => console.log(e)}
+          tabContainerStyle={styles.tabContainerStyle}
+          tabStyle={styles.tabStyle}
+          tabTextStyle={styles.tabTextStyle}
+        />
+        {renderMarginBottom(12)}
+        <TabSwitcher
+          title="Rental Date & Time"
+          data={rentalData}
+          onPress={e => console.log(e)}
+          tabContainerStyle={styles.tabContainerStyle}
+          tabStyle={[styles.tabStyle, styles.ph]}
+          tabTextStyle={styles.tabTextStyle}
+        />
+        {renderMarginBottom(12)}
+        <Pressable
+          onPress={() => setShowDatePicker(true)}
+          style={styles.dateContainer}>
+          <View>
+            <Text style={styles.dateText}>Pick up Date</Text>
+            <Text style={styles.date}>19/Jan/2024</Text>
+          </View>
+          <View>
+            <Text style={styles.dateText}>Return Date</Text>
+            <Text style={styles.date}>19/Jan/2024</Text>
+          </View>
+        </Pressable>
+        {renderMarginBottom(12)}
+        <Text style={styles.locationText}>Car Location</Text>
+        <InputComponent
+          onChangeText={() => console.log('')}
+          placeholder="Enter Location"
+        />
+        {renderMarginBottom(12)}
+      </ScrollView>
+      <Button text="Pay Now" buttonStyles={styles.buttonStyle} />
+      <DateComponent visible={showDatePicker} setVisible={setShowDatePicker} />
     </View>
   );
 };
-
 export default BookingScreen;

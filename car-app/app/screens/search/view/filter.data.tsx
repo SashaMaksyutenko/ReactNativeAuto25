@@ -1,3 +1,6 @@
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {scale} from '../../../theme/scale';
+
 export const data = [
   {
     id: 1,
@@ -15,7 +18,6 @@ export const data = [
     value: 'Luxury Cars',
   },
 ];
-
 export const rentalData = [
   {
     id: 1,
@@ -38,7 +40,6 @@ export const rentalData = [
     value: 'Weekly',
   },
 ];
-
 export const sitingCapacity = [
   {
     id: 1,
@@ -61,7 +62,6 @@ export const sitingCapacity = [
     value: '6',
   },
 ];
-
 export const FuelType = [
   {
     id: 1,
@@ -82,5 +82,27 @@ export const FuelType = [
     id: 4,
     label: 'Hybrid',
     value: 'Hybrid',
+  },
+];
+export const genderData = [
+  {
+    id: 1,
+    label: 'Male',
+    value: 'Male',
+    component: <MaterialCommunityIcons name="human-male" size={scale(18)} />,
+  },
+  {
+    id: 2,
+    label: 'Female',
+    value: 'Female',
+    component: <MaterialCommunityIcons name="human-female" size={scale(18)} />,
+  },
+  {
+    id: 3,
+    label: 'Others',
+    value: 'Others',
+    component: (
+      <MaterialCommunityIcons name="gender-male-female" size={scale(18)} />
+    ),
   },
 ];

@@ -4,11 +4,9 @@ import {createStyles} from './stepper.styles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {scale} from '../../theme/scale';
 import {colors} from '../../theme/colors';
-
 interface IStepper {
   active: number;
 }
-
 const StepperComponent = ({active = 1}: IStepper) => {
   const styles = createStyles();
   return (
@@ -65,5 +63,4 @@ const StepperComponent = ({active = 1}: IStepper) => {
     </View>
   );
 };
-
 export default StepperComponent;

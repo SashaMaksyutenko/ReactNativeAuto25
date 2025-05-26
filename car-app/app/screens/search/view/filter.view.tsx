@@ -16,10 +16,12 @@ import {createStyles} from '../search.styles';
 import InputComponent from '../../../components/input/component';
 import {data, FuelType, rentalData, sitingCapacity} from './filter.data';
 import Button from '../../../components/button/component';
+import DateComponent from '../../../components/date/component';
 const FilterView = ({visible, setVisible}: IFilterProps) => {
   const [value, setValue] = useState(0);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(100);
+  const [showDatePicker, setShowDatePicker] = useState(false);
   const styles = createStyles();
   return (
     <BottomSheet visible={visible} setVisible={setVisible}>
@@ -88,7 +90,11 @@ const FilterView = ({visible, setVisible}: IFilterProps) => {
             {renderMarginTop(8)}
             <View style={styles.frsb}>
               <Text style={styles.placeHolder}>Pick up and Drop Date</Text>
-              <Text style={styles.placeHolder}>05 June 2025</Text>
+              <Text
+                onPress={() => setShowDatePicker(true)}
+                style={styles.placeHolder}>
+                05 June 2025
+              </Text>
             </View>
             {renderMarginTop(8)}
             <InputComponent
@@ -127,6 +133,10 @@ const FilterView = ({visible, setVisible}: IFilterProps) => {
             {renderMarginBottom(16)}
           </View>
         </ScrollView>
+        <DateComponent
+          visible={showDatePicker}
+          setVisible={setShowDatePicker}
+        />
       </View>
     </BottomSheet>
   );

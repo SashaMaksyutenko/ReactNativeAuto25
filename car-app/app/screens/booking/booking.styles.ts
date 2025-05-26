@@ -1,9 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../theme/colors';
 import {scale} from '../../theme/scale';
-import {FontSize} from '../../theme/font-size';
 import {typography} from '../../theme/typography';
-
 export const createStyles = () =>
   StyleSheet.create({
     container: {
@@ -14,48 +12,25 @@ export const createStyles = () =>
       flex: 1,
       paddingHorizontal: scale(18),
     },
-    checkMarkContainer: {
+    switchContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      columnGap: scale(12),
       justifyContent: 'space-between',
-      paddingVertical: scale(12),
-    },
-    checkMark: {
-      height: scale(50),
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    checkMarkText: {
-      marginTop: scale(6),
-      fontSize: FontSize.FONT_12Px,
-      fontFamily: typography.semiBold,
-    },
-    check: {
-      height: scale(20),
-      width: scale(20),
-      backgroundColor: colors.black,
-      borderRadius: scale(100),
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    line: {
-      height: scale(1),
-      width: '80%',
-      backgroundColor: colors.black,
-      top: '50%',
-      left: '10%',
-      position: 'absolute',
-    },
-    active: {
-      height: scale(10),
-      width: scale(10),
-      backgroundColor: colors.background,
-      borderRadius: scale(100),
-    },
-    card: {
       backgroundColor: colors.white,
-      borderWidth: 1,
-      borderColor: colors.gray,
+      paddingVertical: scale(12),
+      paddingHorizontal: scale(12),
+      elevation: 10,
+      overflow: 'hidden',
+      borderRadius: scale(10),
+    },
+    bookTitle: {
+      fontFamily: typography.semiBold,
+      color: colors.black,
+    },
+    bookText: {
+      color: colors.placeholder,
+    },
+    inputContainer: {
+      columnGap: scale(4),
     },
   });

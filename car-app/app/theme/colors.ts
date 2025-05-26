@@ -24,4 +24,5 @@ export const colors = {
   star: '#FF8F3A',
   bgTab: '#21292B',
   crossBg: '#141B34',
+  unFilledStar: '#C5C8D2',
 };

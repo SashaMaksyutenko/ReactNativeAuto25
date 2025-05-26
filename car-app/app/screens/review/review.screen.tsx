@@ -9,7 +9,7 @@ import {colors} from '../../theme/colors';
 import {scale} from '../../theme/scale';
 import ReviewComponent from '../../components/review/component';
 import {renderMarginBottom, renderMarginTop} from '../../utils/ui-utils';
-
+import {navigate} from '../../navigators/navigation-utilities';
 const ReviewScreen = () => {
   const styles = createStyles();
   return (
@@ -33,7 +33,7 @@ const ReviewScreen = () => {
           />
         </View>
         {renderMarginTop(8)}
-        <Button text="Book Now" />
+        <Button onPress={() => navigate('BookingScreen')} text="Book Now" />
         {renderMarginBottom(8)}
       </View>
     </View>

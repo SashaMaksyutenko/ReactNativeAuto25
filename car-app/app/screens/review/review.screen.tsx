@@ -10,6 +10,7 @@ import {scale} from '../../theme/scale';
 import ReviewComponent from '../../components/review/component';
 import {renderMarginBottom, renderMarginTop} from '../../utils/ui-utils';
 import {navigate} from '../../navigators/navigation-utilities';
+
 const ReviewScreen = () => {
   const styles = createStyles();
   return (
@@ -27,13 +28,20 @@ const ReviewScreen = () => {
           <FlatList
             data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
             showsVerticalScrollIndicator={false}
-            renderItem={() => (
-              <ReviewComponent containerStyle={styles.reviewCard} fromReview/>
+            renderItem={({item, index}) => (
+              <ReviewComponent
+                key={index}
+                containerStyle={styles.reviewCard}
+                fromReview
+              />
             )}
           />
         </View>
         {renderMarginTop(8)}
-        <Button onPress={() => navigate('BookingScreen')} text="Book Now" />
+        <Button
+          onPress={() => navigate('BookingDetailsScreen')}
+          text="Book Now"
+        />
         {renderMarginBottom(8)}
       </View>
     </View>

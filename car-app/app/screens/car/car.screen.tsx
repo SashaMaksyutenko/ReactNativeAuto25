@@ -1,7 +1,5 @@
 import React from 'react';
 import {FlatList, Image, Pressable, ScrollView, Text, View} from 'react-native';
-
-
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -112,7 +110,7 @@ const CarScreen = () => {
         </View>
       </ScrollView>
        <Button
-        onPress={() => navigate('BookingScreen')}
+        onPress={() => navigate('BookingDetailsScreen')}
         text="Book Now"
         buttonStyles={styles.btn}
       />

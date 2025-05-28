@@ -2,37 +2,43 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable eqeqeq */
 import React from 'react';
-import {Animated, Platform, ImageBackground, View} from 'react-native';
+import {Animated, Platform, View} from 'react-native';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
+
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 import {NavigatorParamList} from './navigation-route';
 import {navigationRef} from './navigation-utilities';
+
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AccountScreen from '../screens/account/account.screen';
+import BookingDetailsScreen from '../screens/booking/details/booking.screen';
+import BookingPaymentScreen from '../screens/booking/payment/payment.screen';
+import CarScreen from '../screens/car/car.screen';
+import HomeScreen from '../screens/home/home.screen';
+import MessageScreen from '../screens/message/message.screen';
+import NotificationScreen from '../screens/notification/notification.screen';
 import OnBoardingScreen from '../screens/onboarding/onboarding.screen';
+import OnBoardingScreenTwo from '../screens/onboarding/onboardingTwo.screen';
+import OtpScreen from '../screens/otp/otp.screen';
+import ResetScreen from '../screens/reset/reset.screen';
+import ReviewScreen from '../screens/review/review.screen';
+import SearchScreen from '../screens/search/search.screen';
+import SignUpScreen from '../screens/signup/signup.screen';
+import SignInScreen from '../screens/signin/signin.screen';
+import VerifyScreen from '../screens/verify/verify.screen';
 import {colors} from '../theme/colors';
 import {scale} from '../theme/scale';
 import {createStyle} from './navigation.styles';
-import onBoardingScreenTwo from '../screens/onboarding/onboardingTwo.screen';
-import SignInScreen from '../screens/signin/signin.screen';
-import SignUpScreen from '../screens/signup/signup.screen';
-import ResetScreen from '../screens/reset/reset.screen';
-import VerifyScreen from '../screens/verify/verify.screen';
-import OtpScreen from '../screens/otp/otp.screen';
-import HomeScreen from '../screens/home/home.screen';
-import AccountScreen from '../screens/account/account.screen';
-import NotificationScreen from '../screens/notification/notification.screen';
-import MessageScreen from '../screens/message/message.screen';
-import SearchScreen from '../screens/search/search.screen';
-import CarScreen from '../screens/car/car.screen';
-import ReviewScreen from '../screens/review/review.screen';
-import BookingDetailsScreen from '../screens/booking/details/booking.screen';
-import BookingPaymentScreen from '../screens/booking/payment/payment.screen';
-
+import BookingConfirmationScreen from '../screens/booking/confirmation/confirmation.screen';
+import BookingStatusScreen from '../screens/booking/status/status.screen';
 type NavigationProps = Partial<
   React.ComponentProps<typeof NavigationContainer>
 >;
@@ -42,6 +48,7 @@ av.addListener(() => {
 });
 const Stack = createStackNavigator<NavigatorParamList>();
 const Tab = createBottomTabNavigator<NavigatorParamList>();
+
 const TabStack = () => {
   const styles = createStyle();
   return (
@@ -62,7 +69,6 @@ const TabStack = () => {
           } else if (route.name == 'AccountScreen') {
             iconName = focused ? 'person-outline' : 'person-outline';
           }
-
           return (
             <View style={styles.tabContainer}>
               <MaterialIcons
@@ -121,6 +127,7 @@ const TabStack = () => {
     </Tab.Navigator>
   );
 };
+
 const AuthStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
@@ -132,8 +139,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="onBoardingScreenTwo"
-        component={onBoardingScreenTwo}
+        name="OnBoardingScreenTwo"
+        component={OnBoardingScreenTwo}
         options={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
@@ -176,6 +183,7 @@ const AuthStack = () => {
     </Stack.Navigator>
   );
 };
+
 const RootStack = () => {
   return (
     <Stack.Navigator
@@ -188,7 +196,7 @@ const RootStack = () => {
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="ReviewScreen"
         component={ReviewScreen}
         options={{
@@ -209,9 +217,24 @@ const RootStack = () => {
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
       />
+      <Stack.Screen
+        name="BookingConfirmationScreen"
+        component={BookingConfirmationScreen}
+        options={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      />
+      <Stack.Screen
+        name="BookingStatusScreen"
+        component={BookingStatusScreen}
+        options={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      />
     </Stack.Navigator>
   );
 };
+
 const CombinedStack = () => {
   const isAuthenticated = true;
   return (

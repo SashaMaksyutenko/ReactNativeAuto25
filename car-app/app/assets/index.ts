@@ -8,6 +8,7 @@ const assets = {
   ferrari:require('./images/ferrari.png'),
   white_ferrari:require('./images/white_ferrari.png'),
   person:require('./images/person.png'),
-  tesla:require('./images/tesla.png')
+  tesla:require('./images/tesla.png'),
+  success: require('./images/success.png'),
 };
 export default assets;

@@ -106,7 +106,7 @@ const BookingPaymentScreen = () => {
           />
           {renderMarginBottom(24)}
           <Button
-            // onPress={() => navigate('BookingPaymentScreen')}
+            onPress={() => navigate('BookingConfirmationScreen')}
             text="Pay Now"
           />
         </View>

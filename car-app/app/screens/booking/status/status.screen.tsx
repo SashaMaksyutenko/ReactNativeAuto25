@@ -6,6 +6,10 @@ import assets from '../../../assets';
 import {renderBorderBottom, renderMarginBottom} from '../../../utils/ui-utils';
 import Button from '../../../components/button/component';
 import {navigate} from '../../../navigators/navigation-utilities';
+import Feather from 'react-native-vector-icons/Feather';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import {scale} from '../../../theme/scale';
+import {colors} from '../../../theme/colors';
 
 const BookingStatusScreen = () => {
   const styles = createStyles();
@@ -72,6 +76,29 @@ const BookingStatusScreen = () => {
           </Text>
           <Text style={[styles.value, styles.bold, styles.bl]}>$1415</Text>
         </View>
+        {renderMarginBottom(8)}
+        <Button
+          text="Download Receipt"
+          textStyles={styles.outlineButtonText}
+          buttonStyles={styles.downloadBtn}
+          component={
+            <Feather name="download" size={scale(20)} color={colors.gray} />
+          }
+        />
+        {renderMarginBottom(14)}
+        <Button
+          text="Share Your Receipt"
+          textStyles={styles.outlineButtonText}
+          buttonStyles={styles.shareBtn}
+          component={
+            <EvilIcons
+              name="share-google"
+              size={scale(30)}
+              color={colors.gray}
+            />
+          }
+        />
+        {renderMarginBottom(14)}
       </ScrollView>
       <Button
         onPress={() => navigate('BookingStatusScreen')}

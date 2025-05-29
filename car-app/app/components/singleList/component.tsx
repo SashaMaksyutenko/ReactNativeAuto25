@@ -3,7 +3,7 @@ import React, {JSX} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {colors} from '../../theme/colors';
 import {scale} from '../../theme/scale';
-import {createStyles} from './singlelist.styles';
+import {createStyles} from './singleList.styles';
 
 interface ISingleListProps {
   component: JSX.Element;

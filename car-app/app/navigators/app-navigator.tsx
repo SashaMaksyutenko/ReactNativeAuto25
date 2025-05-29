@@ -39,6 +39,9 @@ import {createStyle} from './navigation.styles';
 import BookingConfirmationScreen from '../screens/booking/confirmation/confirmation.screen';
 import BookingStatusScreen from '../screens/booking/status/status.screen';
 import ProfileScreen from '../screens/account/profile/profile.screen';
+import EditScreen from '../screens/account/edit/edit.screen';
+
+
 type NavigationProps = Partial<
   React.ComponentProps<typeof NavigationContainer>
 >;
@@ -227,6 +230,13 @@ const RootStack = () => {
       <Stack.Screen
         name="BookingStatusScreen"
         component={BookingStatusScreen}
+        options={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      />
+      <Stack.Screen
+        name="EditScreen"
+        component={EditScreen}
         options={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}

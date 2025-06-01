@@ -141,7 +141,7 @@ const ProfileScreen = () => {
               color={colors.gray}
             />
           }
-          text="Privacy Policy"
+          text="Log Out"
         />
         {renderMarginBottom(32)}
         {renderMarginBottom(32)}

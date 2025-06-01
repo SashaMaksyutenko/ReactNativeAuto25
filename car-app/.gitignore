@@ -1,7 +1,7 @@
 # OSX
 #
 .DS_Store
-
+android/app/src/main/res
 # Xcode
 #
 build/

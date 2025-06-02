@@ -2,16 +2,22 @@ import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Feather from 'react-native-vector-icons/Feather';
+import Octicons from 'react-native-vector-icons/Octicons';
 import assets from '../../assets';
 import {goBack} from '../../navigators/navigation-utilities';
 import {colors} from '../../theme/colors';
 import {scale} from '../../theme/scale';
 import {createStyles} from './header.styles';
 import {IHeaderProps} from './IHeader.props';
-const HeaderComponent = ({title, hasBack = true}: IHeaderProps) => {
+
+const HeaderComponent = ({
+  title,
+  hasBack = false,
+  actionComponent,
+}: IHeaderProps) => {
   const styles = createStyles();
   const {logo_black, person} = assets;
+
   return (
     <View style={styles.header}>
       <View style={styles.flexRow}>
@@ -29,8 +35,9 @@ const HeaderComponent = ({title, hasBack = true}: IHeaderProps) => {
             <Text style={styles.titleStyle}>{title}</Text>
           </React.Fragment>
         )}
+        {actionComponent}
       </View>
-      {hasBack && <Text style={[styles.titleStyle, styles.t20]}>{title}</Text>}
+      {title && <Text style={[styles.titleStyle, styles.t20]}>{title}</Text>}
       <View style={styles.flexRow}>
         {hasBack ? (
           <Pressable style={styles.borderRound}>
@@ -43,16 +50,14 @@ const HeaderComponent = ({title, hasBack = true}: IHeaderProps) => {
         ) : (
           <React.Fragment>
             <Pressable style={styles.borderRound}>
-              <Feather name="bell" size={scale(20)} color={colors.gray} />
+              <Octicons name="bell" size={scale(20)} color={colors.gray} />
             </Pressable>
             <Pressable>
               <Image source={person} style={styles.person} />
             </Pressable>
           </React.Fragment>
         )}
-      </View>
+      </View>More actions
     </View>
   );
 };
-
-export default HeaderComponent;

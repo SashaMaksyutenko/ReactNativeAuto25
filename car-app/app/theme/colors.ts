@@ -25,6 +25,7 @@ export const colors = {
   bgTab: '#21292B',
   crossBg: '#141B34',
   unFilledStar: '#C5C8D2',
+  badgeBg: '#3B82F6',
   visaCard: {
     primary: '#000000',
     secondary: '#1c1c1c',

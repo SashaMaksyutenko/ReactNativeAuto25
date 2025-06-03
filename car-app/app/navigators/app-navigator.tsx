@@ -3,23 +3,22 @@
 /* eslint-disable eqeqeq */
 import React from 'react';
 import {Animated, Platform, View} from 'react-native';
-
 import {NavigationContainer} from '@react-navigation/native';
 import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
-
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
 import {NavigatorParamList} from './navigation-route';
 import {navigationRef} from './navigation-utilities';
-
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import EditScreen from '../screens/account/edit/edit.screen';
+import ProfileScreen from '../screens/account/profile/profile.screen';
+import BookingConfirmationScreen from '../screens/booking/confirmation/confirmation.screen';
 import BookingDetailsScreen from '../screens/booking/details/booking.screen';
 import BookingPaymentScreen from '../screens/booking/payment/payment.screen';
+import BookingStatusScreen from '../screens/booking/status/status.screen';
 import CarScreen from '../screens/car/car.screen';
 import HomeScreen from '../screens/home/home.screen';
 import MessageScreen from '../screens/message/message.screen';
@@ -36,15 +35,11 @@ import VerifyScreen from '../screens/verify/verify.screen';
 import {colors} from '../theme/colors';
 import {scale} from '../theme/scale';
 import {createStyle} from './navigation.styles';
-import BookingConfirmationScreen from '../screens/booking/confirmation/confirmation.screen';
-import BookingStatusScreen from '../screens/booking/status/status.screen';
-import ProfileScreen from '../screens/account/profile/profile.screen';
-import EditScreen from '../screens/account/edit/edit.screen';
-
-
+import ChatScreen from '../screens/message/chat/chat.screen';
 type NavigationProps = Partial<
   React.ComponentProps<typeof NavigationContainer>
 >;
+
 const av = new Animated.Value(0);
 av.addListener(() => {
   return;
@@ -241,6 +236,13 @@ const RootStack = () => {
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
       />
+      <Stack.Screen
+        name="ChatScreen"
+        component={ChatScreen}
+        options={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -281,9 +283,10 @@ const CombinedStack = () => {
     </Stack.Navigator>
   );
 };
+
 export function AppNavigator(props: NavigationProps) {
   return (
-    <NavigationContainer ref={navigationRef} {...props}>
+    <NavigationContainer ref={navigationRef} {...props}>More actions
       {CombinedStack()}
     </NavigationContainer>
   );

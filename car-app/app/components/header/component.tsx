@@ -57,7 +57,9 @@ const HeaderComponent = ({
             </Pressable>
           </React.Fragment>
         )}
-      </View>More actions
+      </View>
     </View>
   );
 };
+
+export default HeaderComponent;

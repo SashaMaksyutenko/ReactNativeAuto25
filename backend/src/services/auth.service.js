@@ -23,3 +23,17 @@ export const signupService = async ({
     }
   })
 }
+export const loginService = async ({ email, password }) => {
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user) throw new Error('User not found');
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) throw new Error('Invalid credentials');
+  const token = jwt.sign(
+    { userId: user.id, email: user.email },
+    process.env.JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+  const { password: _, ...userInfo } = user;
+  return { user: userInfo, token };
+};
+

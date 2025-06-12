@@ -1,8 +1,8 @@
-import { uploadImages } from '../services/upload.service'
+import { uploadImages } from '../services/upload.service.js'
 
-export const uploadMedia = async (req, res) => {
+export const uploadMedia = async (req, res,next) => {
   try {
-    const media = await uploadImages(req.body)
+    const media = await uploadImages(req.files)
     req.body.media = media
     next()
   } catch (error) {

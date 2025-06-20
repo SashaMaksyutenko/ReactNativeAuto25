@@ -1,4 +1,4 @@
-import { addCarService, getAllCarsService } from '../services/car.service.js'
+import { addBrandService, addCarService, getAllCarsService } from '../services/car.service.js'
 import { errorResponse, successResponse } from '../services/response.service.js'
 export const getAllCars = async (req, res) => {
   try {
@@ -16,6 +16,17 @@ export const addCar = async (req, res) => {
   try {
     const cars = await addCarService(data)
     return successResponse(res, cars, 'Car added successfully')
+  } catch (error) {
+    return errorResponse(res, error)
+  }
+}
+export const addBrand = async (req, res) => {
+  const data = {
+    ...req.body,
+  }
+  try {
+    const brand = await addBrandService(data)
+    return successResponse(res, brand, 'Brand added successfully')
   } catch (error) {
     return errorResponse(res, error)
   }

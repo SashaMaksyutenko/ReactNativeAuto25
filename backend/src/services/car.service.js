@@ -32,3 +32,11 @@ export const addCarService = async data => {
     }
   })
 }
+export const addBrandService = async data => {
+  return await prisma.brand.create({
+    data: {
+      name: data.name,
+      media: data.media,
+    }
+  })
+}

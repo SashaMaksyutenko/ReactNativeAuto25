@@ -1,5 +1,4 @@
 import { body, validationResult } from 'express-validator'
-import { errorResponse } from '../../services/response.service.js'
 export const validateSignup = [
   body('fullName').notEmpty().withMessage('full name is required'),
   body('email').isEmail().withMessage('Invalid email'),

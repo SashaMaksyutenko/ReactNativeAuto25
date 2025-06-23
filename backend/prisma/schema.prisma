@@ -21,6 +21,7 @@ model user{
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     car car[]
+    reviews reviews[]
 }
 model brand{
    id String @id @default (uuid()) 
@@ -53,4 +54,26 @@ model car{
     location location @relation(fields: [locationId], references: [id])
     createdAt DateTime @default(now())
     updatedAt DateTime 
+    car_availability car_availability[]
+    reviews reviews[]
+}
+model car_availability{
+    id String @id @default (uuid())
+    carId String @default(uuid())
+    car car @relation(fields: [carId], references: [id])
+    startDate DateTime
+    endDate DateTime
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+model reviews{
+    id String @id @default (uuid())
+    carId String @default(uuid())
+    car car @relation(fields: [carId], references: [id])
+    userId String @default(uuid())
+    user user @relation(fields: [userId], references: [id])
+    rating Float
+    comment String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }

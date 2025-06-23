@@ -1,6 +1,5 @@
 import { prisma } from '../../prisma/client.js'
-import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
+
 export const getAllCarsService = async () => {
   const cars = await prisma.car.findMany({
     include: {
@@ -37,6 +36,15 @@ export const addBrandService = async data => {
     data: {
       name: data.name,
       media: data.media,
+    }
+  })
+}
+export const addCarAvailabilityService = async data => {
+  return await prisma.car_availability.create({
+    data: {
+      carId: data.carId,
+      startDate: new Date(data.startDate),
+      endDate: new Date(data.endDate),
     }
   })
 }

@@ -1,7 +1,8 @@
 import express from 'express';
-import { validateReview } from '../middleware/validation/review.validation.js';
-import { addReview, getReviews } from '../controllers/review.controller.js';
+import { validateAddReview, validateDeleteReview, validateGetReview } from '../middleware/validation/review.validation.js';
+import { addReview, deleteReview, getReviews } from '../controllers/review.controller.js';
 const router = express.Router();
-router.get('/:id',getReviews);
-router.post('/add',validateReview,addReview);
+router.get('/car/:id',validateGetReview,getReviews);
+router.delete('/:id',validateDeleteReview,deleteReview);
+router.post('/add',validateAddReview,addReview);
 export default router;

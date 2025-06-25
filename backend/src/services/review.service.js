@@ -21,3 +21,11 @@ export const getReviewsService = async (data) => {
     })
   return reviews
 }
+export const deleteReviewService = async (reviewId) => {
+  const review = await prisma.reviews.delete({
+    where: {
+      id: reviewId,
+    },
+  })
+  return review
+}

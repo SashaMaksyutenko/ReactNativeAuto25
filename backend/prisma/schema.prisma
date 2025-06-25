@@ -10,6 +10,28 @@ enum Role{
     VENDOR
     ADMIN
 }
+enum PaymentStatus{
+    PENDING
+    COMPLETED
+    FAILED
+    CANCELLED
+    REFUNDED
+    PROCESSING
+}
+enum BookingStatus{
+    RESERVED
+    CONFIRMED
+    CANCELLED
+    COMPLETED
+    NO_SHOW
+}
+enum PaymentMethod{
+    CARD
+    CASH
+    UPI
+    WALLET
+    NET_BANKING
+}
 model user{
     id String @id @default (uuid())
     fullName String
@@ -22,6 +44,7 @@ model user{
     updatedAt DateTime @updatedAt
     car car[]
     reviews reviews[]
+    booking booking[]
 }
 model brand{
    id String @id @default (uuid()) 
@@ -56,6 +79,7 @@ model car{
     updatedAt DateTime 
     car_availability car_availability[]
     reviews reviews[]
+    booking booking[]
 }
 model car_availability{
     id String @id @default (uuid())
@@ -76,4 +100,34 @@ model reviews{
     comment String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+}
+model booking{
+    id String @id @default (uuid())
+    carId String @default(uuid())
+    car car @relation(fields: [carId], references: [id])
+    userId String @default(uuid())
+    user user @relation(fields: [userId], references: [id])
+    name String
+    email String
+    phone String
+    paymentStatus PaymentStatus
+    bookingStatus BookingStatus
+    startDate DateTime
+    endDate DateTime
+    totalPrice Float
+    status String @default("PENDING")
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    payment payment[]
+}
+model payment{
+    id String @id @default (uuid())
+    bookingId String @default(uuid())
+    booking booking @relation(fields: [bookingId], references: [id])
+    amount Float
+    paymentMethod PaymentMethod @default(CARD)
+    paymentDate DateTime @default(now())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    userId String?
 }
